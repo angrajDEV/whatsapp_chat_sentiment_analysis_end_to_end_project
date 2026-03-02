@@ -1,0 +1,10 @@
+README.md
+setup.py
+src/__init__.py
+src/parser.py
+src/sentiment.py
+src/visualize.py
+whatsapp_sentiment.egg-info/PKG-INFO
+whatsapp_sentiment.egg-info/SOURCES.txt
+whatsapp_sentiment.egg-info/dependency_links.txt
+whatsapp_sentiment.egg-info/top_level.txt

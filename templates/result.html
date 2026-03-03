@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <h1>WhatsApp Chat Sentiment Analysis Results</h1>
+
+    <h2>Overall Sentiment Distribution</h2>
+    <img src="{{ url_for('static', filename='images/sentiment_distribution.png') }}" width="600"/>
+
+    <h2>Sentiment per Person</h2>
+    <img src="{{ url_for('static', filename='images/sender_sentiment.png') }}" width="700"/>
+
+    <h2>Message Count per Person</h2>
+    <img src="{{ url_for('static', filename='images/message_count.png') }}" width="600"/>
+
+    <h2>Most Used Words</h2>
+    <img src="{{ url_for('static', filename='images/wordcloud.png') }}" width="700"/>
+
+    <h2>Top 10 Most Used Emojis</h2>
+    <img src="{{ url_for('static', filename='images/emoji_analysis.png') }}" width="700"/>
+
+    <h2>Most Active Hour</h2>
+    <img src="{{ url_for('static', filename='images/active_hour.png') }}" width="700"/>
+
+    <h2>Most Active Day</h2>
+    <img src="{{ url_for('static', filename='images/active_day.png') }}" width="700"/>
+
+    <h2>Top 5 Most Positive Messages</h2>
+    <table border="1">
+        <tr><th>Sender</th><th>Message</th><th>Score</th></tr>
+        {% for row in top_positive %}
+        <tr><td>{{row.sender}}</td><td>{{row.message}}</td><td>{{row.sentiment_score}}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Top 5 Most Negative Messages</h2>
+    <table border="1">
+        <tr><th>Sender</th><th>Message</th><th>Score</th></tr>
+        {% for row in top_negative %}
+        <tr><td>{{row.sender}}</td><td>{{row.message}}</td><td>{{row.sentiment_score}}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Per Person WordCloud</h2>
+    {% for sender in senders %}
+    <h3>{{sender}}</h3>
+    <img src="{{ url_for('static', filename='images/wordcloud_' + sender.replace(' ','_') + '.png') }}" width="700"/>
+    {% endfor %}
+
+    <br><br>
+    <a href="/">Analyze Another Chat</a>
+</body>
+</html>

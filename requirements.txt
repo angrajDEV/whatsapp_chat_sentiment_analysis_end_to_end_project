@@ -8,5 +8,6 @@ matplotlib
 seaborn
 plotly
 emoji
+vaderSentiment wordcloud emoji
 
--e.
+
